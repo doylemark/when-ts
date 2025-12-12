@@ -1,0 +1,46 @@
+{
+  "name": "when-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./rules/en": {
+      "import": "./dist/rules/en/index.js",
+      "types": "./dist/rules/en/index.d.ts"
+    },
+    "./rules/br": {
+      "import": "./dist/rules/br/index.js",
+      "types": "./dist/rules/br/index.d.ts"
+    },
+    "./rules/nl": {
+      "import": "./dist/rules/nl/index.js",
+      "types": "./dist/rules/nl/index.d.ts"
+    },
+    "./rules/ru": {
+      "import": "./dist/rules/ru/index.js",
+      "types": "./dist/rules/ru/index.d.ts"
+    },
+    "./rules/zh": {
+      "import": "./dist/rules/zh/index.js",
+      "types": "./dist/rules/zh/index.d.ts"
+    },
+    "./rules/common": {
+      "import": "./dist/rules/common/index.js",
+      "types": "./dist/rules/common/index.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "bun test",
+    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.3.0"
+  }
+}
