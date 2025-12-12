@@ -11,17 +11,17 @@ This port includes the full test suite of 500+ cases to ensure parity with the o
 ```typescript
 import { when } from "when-ts";
 
-const tomorrowAt5 = when.en("tomorrow at 5pm");
+const tomorrowAt5 = when.en("maybe tomorrow at 5pm?");
 console.log(tomorrowAt5)
 
 // {
-//   source: "tomorrow at 5pm",
+//   source: "maybe tomorrow at 5pm?",
 //   time: 2025-12-13T17:00:00.018Z,
 //   index: 0,
 //   text: "tomorrow at 5pm",
 // } 
 
-const base = new Date("2024-01-15T10:00:00Z");
+const base = new Date("2024-01-15T10:00:00Z"); // base defaults to Date.now()
 const lastWednesday = when.br("última quarta-feira", base);
 ```
 
