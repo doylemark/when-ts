@@ -1,6 +1,7 @@
 {
-  "name": "when-ts",
+  "name": "say-when",
   "version": "1.0.0",
+  "description": "A natural language date/time parser with pluggable rules and multi-language support",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -34,11 +35,38 @@
       "types": "./dist/rules/common/index.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "bun run build:types && bun run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "bun build src/index.ts src/rules/en/index.ts src/rules/br/index.ts src/rules/nl/index.ts src/rules/ru/index.ts src/rules/zh/index.ts src/rules/common/index.ts --outdir dist --minify --sourcemap=linked --target=node --splitting",
     "test": "bun test",
-    "build": "bun build ./src/index.ts --outdir ./dist --target bun",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build"
   },
+  "keywords": [
+    "date",
+    "time",
+    "parser",
+    "natural-language",
+    "nlp",
+    "datetime",
+    "when",
+    "relative-date",
+    "date-parser"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markwylde/when.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markwylde/when/issues"
+  },
+  "homepage": "https://github.com/markwylde/when#readme",
   "devDependencies": {
     "@types/bun": "latest",
     "typescript": "^5.3.0"

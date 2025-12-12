@@ -1,4 +1,4 @@
-# when-ts
+# say-when
 
 > A natural language date/time parser for TypeScript with pluggable rules and merge strategies
 
@@ -9,14 +9,14 @@ This port includes the full test suite of 500+ cases to ensure parity with the o
 ## Examples
 
 ```typescript
-import { when } from "when-ts";
+import { when } from "say-when";
 
 const tomorrowAt5 = when.en("maybe tomorrow at 5pm?");
 console.log(tomorrowAt5)
 
 // {
 //   source: "maybe tomorrow at 5pm?",
-//   time: 2025-12-13T17:00:00.018Z,
+//   time: 2025-12-13T17:00:00.000Z,
 //   index: 0,
 //   text: "tomorrow at 5pm",
 // } 
@@ -29,13 +29,13 @@ const lastWednesday = when.br("última quarta-feira", base);
 
 ```bash
 # Using bun
-bun add when-ts
+bun add say-when
 
 # using pnpm
-pnpm install when-ts
+pnpm install say-when
 
 # Using npm
-npm install when-ts
+npm install say-when
 ```
 
 
@@ -54,9 +54,9 @@ when.zh("明天下午5点");                // Chinese
 Create a parser with specific rules, see the [API Reference](#api-reference) for available rules:
 
 ```typescript
-import { when } from "when-ts";
-import { casualDate, deadline } from "when-ts/rules/en";
-import { slashDMY } from "when-ts/rules/common";
+import { when } from "say-when";
+import { casualDate, deadline } from "say-when/rules/en";
+import { slashDMY } from "say-when/rules/common";
 
 const custom = when.create({
   rules: [casualDate(), deadline(), slashDMY()]
@@ -70,9 +70,9 @@ custom("in 5 days");
 Control how far apart matches can be to be considered part of the same expression:
 
 ```typescript
-import { when, createParser } from "when-ts";
-import * as en from "when-ts/rules/en";
-import * as common from "when-ts/rules/common";
+import { when, createParser } from "say-when";
+import * as en from "say-when/rules/en";
+import * as common from "say-when/rules/common";
 
 // Default distance is 5 characters
 // "February 23, 2019 | 1:46pm" - the "|" creates distance > 5
@@ -136,7 +136,7 @@ interface Options {
 ### Creating Custom Rules
 
 ```typescript
-import { createRule, type Strategy } from "when-ts";
+import { createRule, type Strategy } from "say-when";
 
 function myRule(strategy: Strategy = "override") {
   return createRule(
@@ -157,7 +157,7 @@ function myRule(strategy: Strategy = "override") {
 
 ## Available Rules
 
-### English (`when-ts/rules/en`)
+### English (`say-when/rules/en`)
 - `casualDate` - today, tomorrow, yesterday, tonight
 - `casualTime` - morning, noon, afternoon, evening
 - `weekday` - Monday, next Tuesday, past Friday
@@ -167,7 +167,7 @@ function myRule(strategy: Strategy = "override") {
 - `pastTime` - 5 minutes ago, 2 weeks ago
 - `exactMonthDate` - March 5th, 15 January 2024
 
-### Common (`when-ts/rules/common`)
+### Common (`say-when/rules/common`)
 - `slashDMY` - DD/MM/YYYY format
 
 ### Other Languages

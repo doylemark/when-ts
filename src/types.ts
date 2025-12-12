@@ -36,7 +36,7 @@ export interface ParserConfig {
  *
  * @example
  * ```typescript
- * import { when } from "when-ts";
+ * import { when } from "say-when";
  *
  * // Use a language-specific parser
  * when.en("tomorrow at 5pm");
