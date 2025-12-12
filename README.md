@@ -8,11 +8,22 @@ This port includes the full test suite of 500+ cases to ensure parity with the o
 
 ## Examples
 
-- **tonight at 11:10 pm**
-- at **Friday afternoon**
-- the deadline is **next tuesday 14:00**
-- drop me a line **next wednesday at 2:25 p.m**
-- it could be done at **11 am past tuesday**
+```typescript
+import { when } from "when-ts";
+
+const tomorrowAt5 = when.en("tomorrow at 5pm");
+console.log(tomorrowAt5)
+
+// {
+//   source: "tomorrow at 5pm",
+//   time: 2025-12-13T17:00:00.018Z,
+//   index: 0,
+//   text: "tomorrow at 5pm",
+// } 
+
+const base = new Date("2024-01-15T10:00:00Z");
+const lastWednesday = when.br("última quarta-feira", base);
+```
 
 ## Installation
 
@@ -27,31 +38,6 @@ pnpm install when-ts
 npm install when-ts
 ```
 
-## Usage
-
-```typescript
-import { when } from "when-ts";
-
-// Use a language-specific parser
-const result = when.en("tomorrow at 5pm");
-
-/*{
-    source: "tomorrow at 5pm",
-    time: 2025-12-13T17:00:00.018Z,
-    index: 0,
-    text: "tomorrow at 5pm",
-}*/
-
-if (result) {
-  console.log(result.time);   // Date object
-  console.log(result.text);   // "tomorrow at 5pm"
-  console.log(result.index);  // Position in original string
-}
-
-// With a custom base time
-const base = new Date("2024-01-15T10:00:00Z");
-when.en("next friday", base);
-```
 
 ### Supported Languages
 
